@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorrightmain">#0be881</color>
+    <color name="colorleftmain">#0652DD</color>
+    <color name="colorprofilelight">#7efff5</color>
+    <color name="colorprofiledark">#5f27cd</color>
+    <color name="colorprofilebuttonlight">#f39c12</color>
+    <color name="colorprofilebuttondark">#6D214F</color>
+    <color name="colorprofilebuttonstrok">#b8e994</color>
+    <color name="colorcheckuplight">#33BBC5</color>
+    <color name="colorcheckupdark">#F6635C</color>
+</resources>
