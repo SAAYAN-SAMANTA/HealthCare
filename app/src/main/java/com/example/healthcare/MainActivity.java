@@ -7,6 +7,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
         videoView=(VideoView) findViewById(R.id.videoViewbg);
@@ -40,20 +42,18 @@ public class MainActivity extends AppCompatActivity {
         pass=(EditText) findViewById(R.id.editTextpass);
         login=(Button) findViewById(R.id.buttonlogin);
     }
-    public void click(View view) {
-        Intent intent = new Intent(MainActivity.this, home.class);
-        startActivity(intent);
-    }
 
-//    public void click(View view){
-//        if(user.equals("saayan") && pass.equals("2003")){
-//            Intent intent=new Intent(MainActivity.this,home.class);
-//            startActivity(intent);
-//        }
-//        else{
-//            Toast.makeText(MainActivity.this,"Sorry!! Login failed",Toast.LENGTH_LONG).show();
-//        }
-//    }
+    public void click(View view){
+        String name= user.getText().toString();
+        String security_key=pass.getText().toString();
+        if(name.equals("saayan") && security_key.equals("2003")){
+            Intent intent=new Intent(MainActivity.this,home.class);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(MainActivity.this,"Sorry!! Login failed",Toast.LENGTH_LONG).show();
+        }
+    }
 
     @Override
     protected void onPostResume() {

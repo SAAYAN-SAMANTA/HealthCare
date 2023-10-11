@@ -11,4 +11,14 @@
     <color name="colorprofilebuttonstrok">#b8e994</color>
     <color name="colorcheckuplight">#33BBC5</color>
     <color name="colorcheckupdark">#F6635C</color>
+    <color name="colorheaderdark">#0984e3</color>
+    <color name="colorheaderdark2">#130f40</color>
+    <color name="coloruserprofilebg">#3742fa</color>
+    <color name="coloruserprofilebgshadow">#60a3bc</color>
+    <color name="coloraddresstextviewbg">#ced6e0</color>
+    <color name="colorcheckuplightbg">#70a1ff</color>
+    <color name="colorlightdesign">#7bed9f</color>
+    <color name="colortransparent">#RRGGBBAA</color>
+    <color name="colordarkgreen">#009432</color>
+    <color name="colorbuttondoctordark">#218c74</color>
 </resources>
