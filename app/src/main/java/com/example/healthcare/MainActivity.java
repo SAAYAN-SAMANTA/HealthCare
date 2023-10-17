@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void click(View view){
-        String name= user.getText().toString();
+        String name= user.getText().toString().trim();
         String security_key=pass.getText().toString();
         if(name.equals("saayan") && security_key.equals("2003")){
             Intent intent=new Intent(MainActivity.this,home.class);

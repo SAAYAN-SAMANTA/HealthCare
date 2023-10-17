@@ -13,8 +13,30 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
+        <TextView
+            android:id="@+id/invalid_pulse"
+            android:layout_width="291dp"
+            android:layout_height="20dp"
+            android:textColor="#FF0000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/pulse"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/pulse"
+            app:layout_constraintTop_toBottomOf="@+id/pulse" />
+
+        <TextView
+            android:id="@+id/invalid_temp"
+            android:layout_width="291dp"
+            android:layout_height="20dp"
+            android:textColor="#FF0000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/tempreture"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/tempreture"
+            app:layout_constraintTop_toBottomOf="@+id/tempreture" />
+
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/sugar"
             android:layout_width="290dp"
             android:layout_height="44dp"
             android:background="@drawable/plaintextbg"
@@ -49,7 +71,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textView9"
             app:layout_constraintTop_toBottomOf="@+id/textView9"
-            app:layout_constraintVertical_bias="0.034" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/textView12"
@@ -60,9 +82,9 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/editTextText3"
+            app:layout_constraintEnd_toEndOf="@+id/pulse"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/editTextText3"
+            app:layout_constraintStart_toStartOf="@+id/pulse"
             app:layout_constraintTop_toBottomOf="@+id/textView11"
             app:layout_constraintVertical_bias="0.248" />
 
@@ -94,7 +116,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/pressure"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.146" />
+            app:layout_constraintVertical_bias="0.16" />
 
         <LinearLayout
             android:id="@+id/linearLayout2"
@@ -169,7 +191,7 @@
             app:layout_constraintVertical_bias="0.018" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/pulse"
             android:layout_width="290dp"
             android:layout_height="44dp"
             android:background="@drawable/plaintextbg"
@@ -192,13 +214,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
+            android:onClick="check"
             android:text="Examin"
             app:backgroundTint="@color/colorheaderdark"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText4"
+            app:layout_constraintTop_toBottomOf="@+id/sugar"
             app:layout_constraintVertical_bias="0.227" />
 
         <ImageView
@@ -224,5 +247,28 @@
             app:layout_constraintHorizontal_bias="0.652"
             app:layout_constraintStart_toStartOf="@+id/imageView5"
             app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+
+        <TextView
+            android:id="@+id/invalid_bp"
+            android:layout_width="291dp"
+            android:layout_height="20dp"
+            android:textColor="#FF0000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/pressure"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/pressure"
+            app:layout_constraintTop_toBottomOf="@+id/pressure" />
+
+        <TextView
+            android:id="@+id/invalid_sugar"
+            android:layout_width="291dp"
+            android:layout_height="20dp"
+            android:textColor="#FF0000"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toEndOf="@+id/sugar"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/sugar"
+            app:layout_constraintTop_toBottomOf="@+id/sugar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
