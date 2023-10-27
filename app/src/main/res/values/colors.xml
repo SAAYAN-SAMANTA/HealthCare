@@ -21,4 +21,7 @@
     <color name="colortransparent">#RRGGBBAA</color>
     <color name="colordarkgreen">#009432</color>
     <color name="colorbuttondoctordark">#218c74</color>
+    <color name="colormedicinehead">#eb2f06</color>
+    <color name="colormedicineback">#fffa65</color>
+    <color name="colormedicinedesign">#EE5A24</color>
 </resources>

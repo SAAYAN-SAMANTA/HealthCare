@@ -7,11 +7,45 @@
     tools:context=".Prescribed_Medicines">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="391dp"
-        android:layout_height="783dp"
-        android:background="#FFFFFF"
-        tools:layout_editor_absoluteX="1dp"
-        tools:layout_editor_absoluteY="1dp">
+        android:layout_width="393dp"
+        android:layout_height="785dp"
+        android:background="@drawable/medicineback">
 
+        <TextView
+            android:id="@+id/textView18"
+            android:layout_width="289dp"
+            android:layout_height="37dp"
+            android:layout_marginBottom="620dp"
+            android:background="@drawable/medicine"
+            android:gravity="center"
+            android:text="PRESCRIPTION"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.326"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout5"
+            app:layout_constraintVertical_bias="0.262" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout5"
+            android:layout_width="304dp"
+            android:layout_height="48dp"
+            android:background="@drawable/medicinedesign"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+
+        <LinearLayout
+            android:layout_width="357dp"
+            android:layout_height="119dp"
+            android:background="@drawable/medicinefooter"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"></LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

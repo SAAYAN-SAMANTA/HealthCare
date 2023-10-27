@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class health_checkup extends AppCompatActivity {
+    String bloodpressure;
     double temperatures;
     int pulses,sugars;
     int checkerbp=0,checkertemp=0,checkerpulse=0,checkersugar=0;
@@ -46,13 +47,14 @@ TextView invalid_sugar;
 //        blood_pressure
             String bloodPressureReading = blood_pressure.getText().toString().trim();
             if (isValidBloodPressureFormat(bloodPressureReading)) {
-                String[] parts = bloodPressureReading.split("/");
-                int systolic = Integer.parseInt(parts[0]);
-                int diastolic = Integer.parseInt(parts[1]);
-                if(systolic<=110 || diastolic<60){
+                String pressure = extractBloodPressureValues(bloodPressureReading);
+                String[] pressureValues = pressure.split("/");
+                int systolic = Integer.parseInt(pressureValues[0]);
+                int diastolic = Integer.parseInt(pressureValues[1]);
+                if(systolic<90 || diastolic<60){
                     checkerbp=1;
                     statusbp="Low";
-                } else if (systolic>=125 || diastolic>60) {
+                } else if (systolic>120 || diastolic>80) {
                     checkerbp=1;
                     statusbp="High";
                 }else {
@@ -61,7 +63,7 @@ TextView invalid_sugar;
                 }
 
             } else {
-                invalid_bp.setText("Please!, Enter the blood pressure in the format xx/xx");
+                invalid_bp.setText("Please!, Enter the blood pressure in the format xx/xx mm Hg");
             }
 //            blood_pressure
 
@@ -70,7 +72,7 @@ TextView invalid_sugar;
                     if (isValidTemperatureFormat(temperatureReading)) {
                         double temperature = extractTemperatureValue(temperatureReading);
                         temperatures=temperature;
-                        if(temperature>=90){
+                        if(temperature>=99.9){
                             checkertemp=1;
                             statustemp="High";
                         } else if (temperature<=30)
@@ -83,7 +85,7 @@ TextView invalid_sugar;
                             statustemp="Normal";
                         }
                     } else {
-                        invalid_temp.setText("Please!, Enter the body temperature in the format xx 'C");
+                        invalid_temp.setText("Please!, Enter the body temperature in the format xx 'F");
                     }
             //body_temperature
 
@@ -149,15 +151,21 @@ TextView invalid_sugar;
 
     //blood pressure
         public static boolean isValidBloodPressureFormat(String reading) {
-            String regex = "\\d{2,3}/\\d{2,3}";
+            String regex = "\\d{2,3}/\\d{2,3} mm Hg";
             return reading.matches(regex);
         }
+
+    public static String extractBloodPressureValues(String reading) {
+        // Remove non-numeric characters and split by '/' to get systolic and diastolic values.
+        String numericValues = reading.replaceAll("[^0-9/]", "");
+        return numericValues;
+    }
     //blood pressure
 
     //body temperature
     public static boolean isValidTemperatureFormat(String reading) {
         // Regular expression to match the format "XXX 'C" where X represents a digit (0-9).
-        String regex = "\\d{2,3} 'C";
+        String regex = "\\d{2,3} 'F";
         return reading.matches(regex);
     }
 
