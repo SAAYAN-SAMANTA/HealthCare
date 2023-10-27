@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class health_checkup extends AppCompatActivity {
+    double temperatures;
+    int pulses,sugars;
+    int checkerbp=0,checkertemp=0,checkerpulse=0,checkersugar=0;
+    String statusbp,statustemp,statuspulse,statussugar;
 EditText blood_pressure;
 TextView invalid_bp;
 EditText body_temperature;
@@ -38,6 +41,7 @@ TextView invalid_sugar;
         Intent intent = new Intent(health_checkup.this, bookdoctor.class);
         startActivity(intent);
     }
+
         public void check(View view) {
 //        blood_pressure
             String bloodPressureReading = blood_pressure.getText().toString().trim();
@@ -46,11 +50,14 @@ TextView invalid_sugar;
                 int systolic = Integer.parseInt(parts[0]);
                 int diastolic = Integer.parseInt(parts[1]);
                 if(systolic<=110 || diastolic<60){
-                    Toast.makeText(health_checkup.this,"Low bp",Toast.LENGTH_SHORT).show();
+                    checkerbp=1;
+                    statusbp="Low";
                 } else if (systolic>=125 || diastolic>60) {
-                    Toast.makeText(health_checkup.this,"High bp",Toast.LENGTH_SHORT).show();
+                    checkerbp=1;
+                    statusbp="High";
                 }else {
-                    Toast.makeText(health_checkup.this,"Normal bp",Toast.LENGTH_SHORT).show();
+                    checkerbp=1;
+                   statusbp="Normal";
                 }
 
             } else {
@@ -62,17 +69,21 @@ TextView invalid_sugar;
                     String temperatureReading = body_temperature.getText().toString().trim();
                     if (isValidTemperatureFormat(temperatureReading)) {
                         double temperature = extractTemperatureValue(temperatureReading);
+                        temperatures=temperature;
                         if(temperature>=90){
-                            Toast.makeText(health_checkup.this,"High body temperature",Toast.LENGTH_SHORT).show();
+                            checkertemp=1;
+                            statustemp="High";
                         } else if (temperature<=30)
                         {
-                            Toast.makeText(health_checkup.this,"Low body temperature",Toast.LENGTH_SHORT).show();
+                            checkertemp=1;
+                            statustemp="Low";
                         }
                         else {
-                            Toast.makeText(health_checkup.this,"Normal body temperature",Toast.LENGTH_SHORT).show();
+                            checkertemp=1;
+                            statustemp="Normal";
                         }
                     } else {
-                        invalid_temp.setText("Please!, Enter the body temperature in the format xx'C");
+                        invalid_temp.setText("Please!, Enter the body temperature in the format xx 'C");
                     }
             //body_temperature
 
@@ -80,12 +91,16 @@ TextView invalid_sugar;
             String pulseRateReading = pulse.getText().toString().trim();
             if (isValidPulseRateFormat(pulseRateReading)) {
                 int pulseRate = extractPulseRateValue(pulseRateReading);
+                pulses=pulseRate;
                 if (pulseRate>100){
-                    Toast.makeText(health_checkup.this,"High Pulse Rate",Toast.LENGTH_SHORT).show();
+                    checkerpulse=1;
+                    statuspulse="High";
                 } else if (pulseRate<60) {
-                    Toast.makeText(health_checkup.this,"Low Pulse Rate",Toast.LENGTH_SHORT).show();
+                    checkerpulse=1;
+                    statuspulse="Low";
                 } else {
-                    Toast.makeText(health_checkup.this,"Normal Pulse Rate",Toast.LENGTH_SHORT).show();
+                    checkerpulse=1;
+                    statuspulse="Normal";
                 }
             } else {
                 invalid_pulse.setText("Please!, Enter the pulse in the format xx beats per min");
@@ -96,18 +111,42 @@ TextView invalid_sugar;
             String sugarLevelReading = sugar.getText().toString().trim();
             if (isValidSugarLevelFormat(sugarLevelReading)) {
                 int sugarLevel = extractSugarLevelValue(sugarLevelReading);
+                sugars=sugarLevel;
                 if(sugarLevel>100){
-                    Toast.makeText(health_checkup.this,"High Sugar Level",Toast.LENGTH_SHORT).show();
+                    checkersugar=1;
+                    statussugar="High";
                 } else if (sugarLevel<70) {
-                    Toast.makeText(health_checkup.this,"Low Sugar Level",Toast.LENGTH_SHORT).show();
+                    checkersugar=1;
+                    statussugar="Low";
                 } else {
-                    Toast.makeText(health_checkup.this,"Normal Sugar Level",Toast.LENGTH_SHORT).show();
+                    checkersugar=1;
+                    statussugar="Normal";
                 }
             } else {
                 invalid_sugar.setText("Please!, Enter the sugar level in the format xx mg/dL");
             }
             //sugar
+            if(checkerbp==1&&checkertemp==1&&checkerpulse==1&&checkersugar==1) {
+                CustomDialog customDialog = new CustomDialog(this);
+                String temp = Double.toString(temperatures);
+                String pulse = Integer.toString(pulses);
+                String sugar = Integer.toString(sugars);
+                customDialog.setParameters(bloodPressureReading, temp, pulse, sugar);
+                customDialog.setstatus(statusbp,statustemp,statuspulse,statussugar);
+                customDialog.show();
             }
+            }
+
+            public void doctor(View view){
+                Intent intent = new Intent(health_checkup.this, bookdoctor.class);
+                startActivity(intent);
+            }
+
+            public void medicine(View view){
+                Intent intent = new Intent(health_checkup.this, Prescribed_Medicines.class);
+                startActivity(intent);
+            }
+
     //blood pressure
         public static boolean isValidBloodPressureFormat(String reading) {
             String regex = "\\d{2,3}/\\d{2,3}";
@@ -132,7 +171,7 @@ TextView invalid_sugar;
     //pulse Rate
     public static boolean isValidPulseRateFormat(String reading) {
         // Regular expression to match the format "XXX beats per minute" where X represents a digit (0-9).
-        String regex = "\\d{2,3} beats per minute";
+        String regex = "\\d{2,3} beats per min";
         return reading.matches(regex);
     }
 
